@@ -1,5 +1,5 @@
 <?php
-
+// ce blog php est pour la quête formulaire en PHP 2 a retiré pour la correction de la quête les formulaire en php 1
 $errors = [];
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,7 +23,9 @@ $errors = [];
     var_dump($errors);
 
 ?>
-
+<?php
+//pour la correction de la quête les formulaire en PHP 1 il faut rajouter "thanks.php" dans action
+?>
 <form action="" method="post">
 <div>
   <label  for="nom">Nom :</label>
