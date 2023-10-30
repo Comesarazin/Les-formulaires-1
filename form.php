@@ -2,25 +2,35 @@
 // ce blog php est pour la quête formulaire en PHP 2 a retiré pour la correction de la quête les formulaire en php 1
 $errors = [];
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (!isset($_POST['user_name']) || trim($_POST['user_name']) === '') {
+      $errors[] = "Le nom est obligatoire";
+  }
+  if (!isset($_POST['user_nameP']) || trim($_POST['user_nameP']) === '') {
+      $errors[] = "Le prénom est obligatoire";
+  }
+  
+  // Validation de l'adresse e-mail
+  if (!isset($_POST['user_email']) || trim($_POST['user_email']) === '') {
+      $errors[] = "L'e-mail est obligatoire";
+  } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
+      $errors[] = "L'adresse e-mail n'est pas valide";
+  }
+  
+  if (!isset($_POST['user_phone']) || trim($_POST['user_phone']) === '') {
+      $errors[] = "Le numéro de téléphone est obligatoire";
+  }
+  if (!isset($_POST['user_message']) || trim($_POST['user_message']) === '') {
+      $errors[] = "Le message est obligatoire";
+  }
 
-        if(!isset($_POST['user_name']) || trim($_POST['user_name']) === '')
-          $errors[] = "Le nom est obligatoire";
-        if(!isset($_POST['user_nameP']) || trim($_POST['user_nameP']) === '') 
-            $errors[] = "Le prénom est obligatoire";
-        if(!isset($_POST['user_email']) || trim($_POST['user_email']) === '') 
-            $errors[] = "Le mail est obligatoire";
-        if(!isset($_POST['user_phone']) || trim($_POST['user_phone']) === '') 
-            $errors[] = "Le numéro de téléphone est obligatoire";
-        if(!isset($_POST['user_message']) || trim($_POST['user_message']) === '') 
-            $errors[] = "Le message est obligatoire";
+  if (empty($errors)) {
+      header('Location: thanks.php');
+      exit;
+  }
+}
 
-        if(empty($errors)) {
-            header('Location: thanks.php');
-        }
-    }
-
-    var_dump($errors);
+var_dump($errors);
 
 ?>
 <?php
