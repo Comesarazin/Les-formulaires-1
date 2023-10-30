@@ -1,5 +1,5 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nom = $_POST["user_name"];
         $prenom = $_POST["user_nameP"];
         $email = $_POST["user_email"];
@@ -13,4 +13,5 @@
     } else {
         echo "Une erreur s'est produite. Veuillez réessayer.";
     }
+
     ?>
